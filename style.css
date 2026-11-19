@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section{
+      display: flex;
+      flex-wrap: wrap;
+      padding: 50px;
+      gap: 15px;
+      justify-content: center;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+body{
+    background-color: rgba(0,0,0,0.1);
+    background-color: Gainsboro;
+}
+a{
+    text-decoration: none;
+    padding:50px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.produto{
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   min-height: 400px;
+   width: 250px;
+   padding: 20px 15px;
+   gap: 12px;
+   border: 2px solid rgba(0,0,0,0.1);
+   border-radius: 20px;
+   background-color: rgba(0,0,0,0.1);
+   cursor: pointer;
+   transition: transform 0.3s ease;
+}
+.produto:hover{
+    transform: translateY(-10px);
+
+}
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    width: 90px;
+    color: white;
+    background-color: red;
+    border-radius: 15px;
+    border: 2px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+  
+
+}
+aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    padding: 50px;
+    gap: 15px;
+    transition: transform 3s ease;
+    font-family: Arial, Helvetica, sans-serif;
+}
+    
+aside:hover{
+    transform: translateY(-10px);
+}
+#add{
+    height: 40px;
+    width: 100px;
+}
+.produto img{
+ width: 140px;
+ height: 140px;
+ border-radius: 50%;
+ object-fit: cover;
+ display: block;
+ margin: 0 auto;
+ border-radius: 50%;
+}
+img{
+    height: 100px;
+    width: 100px;
+    border-radius: 200px;
+    border: 2px rgba(0,0,0,0.1);
+    margin-left: 50px;
+}
+.txt{
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.produto button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    color: white;
+    background-color: red;
+    border-radius: 15px;
+    border: 2px solid rgba(0,0,0,0.1);
+    cursor: pointer;
+    margin-top: auto;
+}
+.produto h1{
+    display:flex;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+}
