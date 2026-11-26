@@ -1,81 +1,85 @@
 
-// Array para armazenar os itens do carrinho
 const carrinho = [];
 
-// Seleciona todos os botões de adicionar
+// Seleciona os botões de adicionar
 const botoesAdicionar = document.querySelectorAll('.adicionar');
 
-// Adiciona um evento de clique para cada botão do cardápio
+// Adiciona produtos ao carrinho
 botoesAdicionar.forEach((botao) => {
   botao.addEventListener('click', (event) => {
-
-    // Encontra o bloco do produto correspondente
     const cardProduto = event.target.closest('.produto');
 
-    // Extrai o nome e o preço do produto
     const nome = cardProduto.querySelector('h1').innerText;
     const precoTexto = cardProduto.querySelector('p').innerText;
 
-    // Transforma o preço em número
-    const precoLimpo = parseFloat(
+    const preco = parseFloat(
       precoTexto.replace('R$', '').replace(',', '.')
     );
 
-    // Cria o objeto do produto
     const produto = {
+      id: Date.now() + Math.random(),
       nome: nome,
-      preco: precoLimpo
+      preco: preco
     };
 
-    // Adiciona o produto ao carrinho
     carrinho.push(produto);
 
-    // Atualiza o carrinho na tela
     atualizarCarrinho();
   });
 });
 
-// Evento de clique no botão finalizar
+// Evento do carrinho: finalizar e remover produtos
 document.querySelector('aside').addEventListener('click', (event) => {
 
-  if (event.target.id === 'add') {
+  // Verifica se clicou em remover
+  if (event.target.classList.contains('remover')) {
+    const id = Number(event.target.dataset.id);
 
-    if (carrinho.length === 0) {
-      alert("Seu carrinho está vazio!");
-    } else {
-      alert("Pedido finalizado com sucesso! Obrigado pela preferência.");
+    const indice = carrinho.findIndex((item) => item.id === id);
+
+    if (indice !== -1) {
+      carrinho.splice(indice, 1);
+      atualizarCarrinho();
     }
+  }
 
+  // Verifica se clicou em finalizar
+  if (event.target.id === 'add') {
+    if (carrinho.length === 0) {
+      alert('Seu carrinho está vazio!');
+    } else {
+      alert('Pedido finalizado com sucesso! Obrigado pela preferência.');
+    }
   }
 
 });
 
-// Função para atualizar o carrinho
+// Atualiza o carrinho na tela
 function atualizarCarrinho() {
 
   const aside = document.querySelector('aside');
 
-  // Verifica se o carrinho está vazio
   if (carrinho.length === 0) {
-
     aside.innerHTML = `
       <h2>Seu pedido</h2>
       <p>Seu carrinho está vazio.</p>
       <p>Total: R$ 00,00</p>
       <button id="add">Finalizar pedido</button>
     `;
-
     return;
   }
 
-  // Cria a lista de produtos e calcula o total
   let itensHtml = '<ul style="list-style: none; padding: 0; margin: 10px 0;">';
-
   let total = 0;
 
   carrinho.forEach((item) => {
 
-    itensHtml += `<li style="margin-bottom: 5px;">${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}</li>`;
+    itensHtml += `
+      <li style="margin-bottom: 10px;">
+        ${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}
+        <button class="remover" data-id="${item.id}">Remover</button>
+      </li>
+    `;
 
     total += item.preco;
 
@@ -83,7 +87,6 @@ function atualizarCarrinho() {
 
   itensHtml += '</ul>';
 
-  // Atualiza o conteúdo do carrinho
   aside.innerHTML = `
     <h2>Seu pedido</h2>
     ${itensHtml}
