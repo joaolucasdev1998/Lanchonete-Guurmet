@@ -68,14 +68,12 @@ function atualizarCarrinho() {
   `;
 
   // Opcional: Se quiser adicionar uma ação ao botão de finalizar pedido depois:
-  const btnFinalizar = document.getElementById('add');
-  if (btnFinalizar) {
-    btnFinalizar.addEventListener('click', () => {
-      if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
-      } else {
-        alert("Pedido finalizado com sucesso! Obrigado pela preferência.");
-      }
-    });
+  document.querySelector('aside').addEventListener('click', (event) => {
+  if (event.target.id === 'add') {
+    if (carrinho.length === 0) {
+      alert("Seu carrinho está vazio!");
+    } else {
+      alert("Pedido finalizado com sucesso! Obrigado pela preferência.");
+    }
   }
-}
+});
