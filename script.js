@@ -1,97 +1,214 @@
 
+
 const carrinho = [];
 
-// Seleciona os botões de adicionar
-const botoesAdicionar = document.querySelectorAll('.adicionar');
+// Número do WhatsApp da lanchonete.
+// Troque pelo número real, incluindo DDI e DDD.
+const numeroWhatsApp = "5511999999999";
 
-// Adiciona produtos ao carrinho
-botoesAdicionar.forEach((botao) => {
-  botao.addEventListener('click', (event) => {
-    const cardProduto = event.target.closest('.produto');
+// Selecionando os elementos do HTML
+const conteudo = document.querySelector(".conteudo");
+const itensCarrinho = document.querySelector("#itens-carrinho");
+const totalElemento = document.querySelector("#total");
+const botaoFinalizar = document.querySelector("#finalizar");
 
-    const nome = cardProduto.querySelector('h1').innerText;
-    const precoTexto = cardProduto.querySelector('p').innerText;
+// Formatando valores em reais
+function formatarPreco(valor) {
+    return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
 
-    const preco = parseFloat(
-      precoTexto.replace('R$', '').replace(',', '.')
-    );
+// Adicionando produtos ao carrinho
+conteudo.addEventListener("click", (event) => {
 
-    const produto = {
-      id: Date.now() + Math.random(),
-      nome: nome,
-      preco: preco
-    };
+    const botao = event.target.closest(".adicionar");
 
-    carrinho.push(produto);
+    if (!botao) return;
+
+    const card = botao.closest(".produto");
+
+    const id = card.dataset.id;
+    const nome = card.dataset.name;
+    const preco = Number(card.dataset.price);
+
+    const produtoExistente = carrinho.find((item) => item.id === id);
+
+    if (produtoExistente) {
+
+        produtoExistente.quantidade++;
+
+    } else {
+
+        const produto = {
+            id: id,
+            nome: nome,
+            preco: preco,
+            quantidade: 1
+        };
+
+        carrinho.push(produto);
+
+    }
 
     atualizarCarrinho();
-  });
+
 });
 
-// Evento do carrinho: finalizar e remover produtos
-document.querySelector('aside').addEventListener('click', (event) => {
+// Atualizando o carrinho na tela
+function atualizarCarrinho() {
 
-  // Verifica se clicou em remover
-  if (event.target.classList.contains('remover')) {
-    const id = Number(event.target.dataset.id);
+    if (carrinho.length === 0) {
+
+        itensCarrinho.innerHTML = `
+            <p class="vazio">Seu carrinho está vazio.</p>
+        `;
+
+        totalElemento.textContent = formatarPreco(0);
+
+        return;
+    }
+
+    let total = 0;
+
+    itensCarrinho.innerHTML = carrinho.map((item) => {
+
+        const subtotal = item.preco * item.quantidade;
+
+        total += subtotal;
+
+        return `
+            <div class="item-carrinho">
+
+                <div class="item-info">
+                    <span>${item.nome}</span>
+                    <span>${formatarPreco(subtotal)}</span>
+                </div>
+
+                <div class="item-controles">
+
+                    <button
+                        data-action="diminuir"
+                        data-id="${item.id}"
+                        aria-label="Diminuir quantidade"
+                    >-</button>
+
+                    <span>${item.quantidade}</span>
+
+                    <button
+                        data-action="aumentar"
+                        data-id="${item.id}"
+                        aria-label="Aumentar quantidade"
+                    >+</button>
+
+                    <button
+                        class="remover"
+                        data-action="remover"
+                        data-id="${item.id}"
+                    >Remover</button>
+
+                </div>
+
+            </div>
+        `;
+
+    }).join("");
+
+    totalElemento.textContent = formatarPreco(total);
+
+}
+
+// Controlando os botões do carrinho
+itensCarrinho.addEventListener("click", (event) => {
+
+    const botao = event.target.closest("button");
+
+    if (!botao) return;
+
+    const id = botao.dataset.id;
+    const acao = botao.dataset.action;
 
     const indice = carrinho.findIndex((item) => item.id === id);
 
-    if (indice !== -1) {
-      carrinho.splice(indice, 1);
-      atualizarCarrinho();
-    }
-  }
+    if (indice === -1) return;
 
-  // Verifica se clicou em finalizar
-  if (event.target.id === 'add') {
-    if (carrinho.length === 0) {
-      alert('Seu carrinho está vazio!');
-    } else {
-      alert('Pedido finalizado com sucesso! Obrigado pela preferência.');
+    const produto = carrinho[indice];
+
+    if (acao === "aumentar") {
+
+        produto.quantidade++;
+
     }
-  }
+
+    if (acao === "diminuir") {
+
+        produto.quantidade--;
+
+        if (produto.quantidade === 0) {
+            carrinho.splice(indice, 1);
+        }
+
+    }
+
+    if (acao === "remover") {
+
+        carrinho.splice(indice, 1);
+
+    }
+
+    atualizarCarrinho();
 
 });
 
-// Atualiza o carrinho na tela
-function atualizarCarrinho() {
+// Calculando o total do pedido
+function calcularTotal() {
 
-  const aside = document.querySelector('aside');
+    let total = 0;
 
-  if (carrinho.length === 0) {
-    aside.innerHTML = `
-      <h2>Seu pedido</h2>
-      <p>Seu carrinho está vazio.</p>
-      <p>Total: R$ 00,00</p>
-      <button id="add">Finalizar pedido</button>
-    `;
-    return;
-  }
+    carrinho.forEach((item) => {
 
-  let itensHtml = '<ul style="list-style: none; padding: 0; margin: 10px 0;">';
-  let total = 0;
+        total += item.preco * item.quantidade;
 
-  carrinho.forEach((item) => {
+    });
 
-    itensHtml += `
-      <li style="margin-bottom: 10px;">
-        ${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}
-        <button class="remover" data-id="${item.id}">Remover</button>
-      </li>
-    `;
-
-    total += item.preco;
-
-  });
-
-  itensHtml += '</ul>';
-
-  aside.innerHTML = `
-    <h2>Seu pedido</h2>
-    ${itensHtml}
-    <p><strong>Total: R$ ${total.toFixed(2).replace('.', ',')}</strong></p>
-    <button id="add">Finalizar pedido</button>
-  `;
+    return total;
 
 }
+
+// Finalizando o pedido pelo WhatsApp
+botaoFinalizar.addEventListener("click", () => {
+
+    if (carrinho.length === 0) {
+
+        alert("Seu carrinho está vazio!");
+
+        return;
+    }
+
+    if (!/^\d{12,13}$/.test(numeroWhatsApp)) {
+
+        alert("Configure o número do WhatsApp da lanchonete no script.js.");
+
+        return;
+    }
+
+    let mensagem = "Olá! Gostaria de fazer este pedido:\n\n";
+
+    carrinho.forEach((item) => {
+
+        mensagem += `${item.quantidade}x ${item.nome}`;
+        mensagem += ` - ${formatarPreco(item.preco * item.quantidade)}\n`;
+
+    });
+
+    mensagem += `\nTotal: ${formatarPreco(calcularTotal())}`;
+
+    const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+    window.open(link, "_blank");
+
+});
+
+// Inicializando o carrinho
+atualizarCarrinho();
