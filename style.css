@@ -1,122 +1,353 @@
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-section{
-      display: flex;
-      flex-wrap: wrap;
-      padding: 50px;
-      gap: 15px;
-      justify-content: center;
+
+html {
+    scroll-behavior: smooth;
 }
-nav{
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+/* MENU */
+
+header {
+    background-color: #1c1c1c;
+    padding: 20px 6%;
+}
+
+.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-   
+    max-width: 1200px;
+    margin: auto;
 }
-body{
-    background-color: rgba(0,0,0,0.1);
-    background-color: Gainsboro;
-}
-a{
+
+.logo {
+    color: #ffb000;
+    font-size: 25px;
+    font-weight: bold;
     text-decoration: none;
-    padding:50px;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
 }
-.produto{
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-start;
-   align-items: center;
-   min-height: 400px;
-   width: 250px;
-   padding: 20px 15px;
-   gap: 12px;
-   border: 2px solid rgba(0,0,0,0.1);
-   border-radius: 20px;
-   background-color: rgba(0,0,0,0.1);
-   cursor: pointer;
-   transition: transform 0.3s ease;
-}
-.produto:hover{
-    transform: translateY(-10px);
 
-}
-button{
+.links {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20px;
-    width: 90px;
+    gap: 25px;
+}
+
+.links a {
     color: white;
-    background-color: red;
-    border-radius: 15px;
-    border: 2px solid rgba(0,0,0,0.1);
-    cursor: pointer;
-  
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
+.links a:hover {
+    color: #ffb000;
 }
-aside{
+
+/* APRESENTAÇÃO */
+
+.hero {
+    min-height: 380px;
+    background-color: #252525;
+    color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: end;
-    padding: 50px;
-    gap: 15px;
-    transition: transform 3s ease;
-    font-family: Arial, Helvetica, sans-serif;
-}
-    
-aside:hover{
-    transform: translateY(-10px);
-}
-#add{
-    height: 40px;
-    width: 100px;
-}
-.produto img{
- width: 140px;
- height: 140px;
- border-radius: 50%;
- object-fit: cover;
- display: block;
- margin: 0 auto;
- border-radius: 50%;
-}
-img{
-    height: 100px;
-    width: 100px;
-    border-radius: 200px;
-    border: 2px rgba(0,0,0,0.1);
-    margin-left: 50px;
-}
-.txt{
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.produto button{
-    display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height: 40px;
+    padding: 50px 8%;
+    gap: 30px;
+}
+
+.hero-text {
+    max-width: 550px;
+}
+
+.hero-text span,
+.titulo-cardapio span {
+    color: #e99a00;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 15px 0;
+}
+
+.hero p {
+    line-height: 1.7;
+    color: #ddd;
+    margin-bottom: 25px;
+}
+
+.hero img {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+}
+
+.btn-cardapio {
+    display: inline-block;
+    background-color: #e99a00;
+    color: #222;
+    padding: 14px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-cardapio:hover {
+    background-color: #ffbd35;
+    transform: translateY(-3px);
+}
+
+/* TÍTULO DO CARDÁPIO */
+
+.titulo-cardapio {
+    text-align: center;
+    padding: 55px 15px 30px;
+}
+
+.titulo-cardapio h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.titulo-cardapio p {
+    color: #666;
+}
+
+/* ORGANIZAÇÃO DO CARDÁPIO E CARRINHO */
+
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+    gap: 25px;
+    max-width: 1250px;
+    margin: auto;
+    padding: 20px;
+}
+
+.conteudo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* CARDS DOS PRODUTOS */
+
+.produto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    padding: 18px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.produto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.13);
+}
+
+.produto img {
     width: 100%;
-    color: white;
-    background-color: red;
-    border-radius: 15px;
-    border: 2px solid rgba(0,0,0,0.1);
+    height: 145px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.produto h3 {
+    font-size: 19px;
+    margin: 15px 0 8px;
+}
+
+.produto p {
+    color: #c47a00;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* BOTÕES */
+
+button {
     cursor: pointer;
+    border: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.produto button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #e99a00;
+    color: #222;
     margin-top: auto;
 }
-.produto h1{
-    display:flex;
-    height: 60px;
+
+.produto button:hover {
+    background-color: #ffbd35;
+}
+
+/* CARRINHO */
+
+.carrinho {
+    background-color: white;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 20px;
+}
+
+.carrinho h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.vazio {
+    color: #777;
+    padding: 15px 0;
+}
+
+.item-carrinho {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.item-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.item-controles {
+    display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+}
+
+.item-controles button {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    background-color: #eee;
+}
+
+.item-controles button:hover {
+    background-color: #ddd;
+}
+
+.remover {
+    margin-left: auto;
+    color: #d22;
+    background: none;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin: 22px 0;
+    font-size: 18px;
+}
+
+.total strong {
+    color: #c47a00;
+}
+
+#finalizar {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    background-color: #218c48;
+    color: white;
+    font-size: 15px;
+}
+
+#finalizar:hover {
+    background-color: #176b35;
+}
+
+/* RODAPÉ */
+
+footer {
+    background-color: #1c1c1c;
+    color: white;
     text-align: center;
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 35px 15px;
+    margin-top: 50px;
+}
+
+footer h2 {
+    color: #ffb000;
+    margin-bottom: 10px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1000px) {
+    .conteudo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .carrinho {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .links {
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .conteudo {
+        grid-template-columns: 1fr;
+    }
+
+    .layout {
+        padding: 12px;
+    }
+
+    .titulo-cardapio h2 {
+        font-size: 27px;
+    }
 }
