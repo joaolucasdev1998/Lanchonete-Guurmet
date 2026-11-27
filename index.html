@@ -1,146 +1,218 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lanchonete Guurmet</title>
+    <meta name="description" content="Conheça nosso cardápio e peça seu lanche favorito!">
+    <title>Lanchonete Gourmet</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
+
     <header>
-         <nav>
-    <a href="#home">Home</a>
-    <a href="#produtos">Produtos</a>
-    <a href="#contatos">Contatos</a>
-</nav>
+        <nav class="navbar">
+            <a href="#home" class="logo">🍔 Gourmet</a>
+
+            <div class="links">
+                <a href="#home">Home</a>
+                <a href="#produtos">Cardápio</a>
+                <a href="#contatos">Contato</a>
+            </div>
+        </nav>
     </header>
+
     <main>
-        <img src="ilustracao-de-icone-de-design-de-logotipo-hamburguer-de-comida_841047-1661.avif">
-       <section class="txt" id="home">
-        <h1>Hambúrgueres feitos para você!</h1>
-        <p>Seu próximo lanche favorito está aqui! 🍔🔥<br>
 
-Hambúrgueres suculentos, combinações irresistíveis e aquele sabor que dá vontade de repetir.<br>
+        <section class="hero" id="home">
+            <div class="hero-text">
+                <span>O sabor que conquista!</span>
+                <h1>Hambúrgueres feitos para você!</h1>
 
-Explore nosso cardápio e faça seu pedido!</p>
-       </section>
-        <section class="conteudo" id="produtos">
-               <div class="produto">
-                <h1>X-bacon</h1>
-                <p>R$27,00</p>
-                <img src="images.jpeg" alt="X-bacon">
-                <button class="adicionar">Adicionar</button>
+                <p>
+                    Hambúrgueres suculentos, combinações irresistíveis
+                    e aquele sabor que dá vontade de repetir.
+                </p>
+
+                <a href="#produtos" class="btn-cardapio">
+                    Ver cardápio
+                </a>
             </div>
-            <div class="produto">
-                <h1>X-tudo</h1>
-                <p>R$30,00</p>
-                <img src="shutterstock_553665772.jpg">
-                <button class="adicionar">Adicionar</button>
-            </div>
-            <div class="produto">
-                <h1>X-salada</h1>
-                <p>R$12,00</p>
-                <img src="x-salada-caseiro.avif">
-                <button class="adicionar">Adicionar</button>
-            </div>
-            <div class="produto">
-                <h1>X-burguer</h1>
-                <p>R$14,00</p>
-                <img src="66e5f508742ed.jpeg">
-                <button class="adicionar">Adicionar</button>
-            </div>
-            <div class="produto">
-                <h1>Pastel</h1>
-                <p>R$12,00</p>
-                <img src="php5UZpd0.jpeg">
-                <button class="adicionar">Adicionar</button>
-            </div>
-            <div class="produto">
-                <h1>Cachorro quente</h1>
-                <p>R$10,00</p>
-                <img src="BULLGUER_CHEESE-BACON-DOG-2_KATO-1024x683.jpg">
-                <button class="adicionar">Adicionar</button>
-            </div>
-           <div class="produto">
-            <h1>X-Egg</h1>
-            <p>R$12,00</p>
-            <img src="um-delicioso-hamburguer-de-pequeno-almoco-com-ovo-frito-e-bacon_23-2151985469.avif">
-            <button class="adicionar">Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>X-Frango</h1>
-            <p>R$16,00</p>
-            <img src="3e60c9c3-d245-40de-8fe3-f1e5decefed1.jpg">
-            <button class="adicionar">Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>X-Calabresa</h1>
-            <p>R$22,00</p>
-            <img src="1920356_1785883486980.webp">
-            <button class="adicionar">Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>X-Cheddar</h1>
-            <p>R$18,00</p>
-            <img src="c7b55a6d-e2f8-4e3c-959a-ad7b618030c7.jpg">
-            <button class=adicionar>Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>X-Coração</h1>
-            <p>R$20,00</p>
-            <img src="Sem título.png">
-            <button class=adicionar>Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>X-Picanha</h1>
-            <p>R$30,00</p>
-            <img src="1902573_1789338423347.webp">
-            <button class=adicionar>Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>Coca-cola 2L</h1>
-            <p>R$15,00</p>
-            <img src="coca cola 2 litros.jpg">
-            <button class="adicionar">Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>Pepsi</h1>
-            <p>R$8,00</p>
-            <img src="refrigerante_pepsi_cola_2_litros_6oavn01ub0.jpg.jpeg">
-            <button class="adicionar">Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>Guaraná Antartica</h1>
-            <p>R$7,00</p>
-            <img src="img.jpeg">
-            <button class="adicionar">Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>Fanta laranja</h1>
-            <p>R$8,00</p>
-            <img src="i.jpeg">
-            <button class="adicionar">Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>Fanta Uva</h1>
-            <p>R$7,50</p>
-            <img src="516_secundario-60698610a50762d2db17745587287151-1024-1024.webp">
-            <button class="adicionar">Adicionar</button>
-           </div>
-           <div class="produto">
-            <h1>Sprite</h1>
-            <p>R$7,00</p>
-            <img src="a.jpeg">
-            <button class="adicionar">Adicionar</button>
-           </div>
+
+            <img
+                src="ilustracao-de-icone-de-design-de-logotipo-hamburguer-de-comida_841047-1661.avif"
+                alt="Ilustração de hambúrguer"
+            >
         </section>
+
+        <div class="titulo-cardapio" id="produtos">
+            <span>Conheça nossas opções</span>
+            <h2>Nosso cardápio</h2>
+            <p>Escolha seus favoritos e monte seu pedido.</p>
+        </div>
+
+        <div class="layout">
+
+            <section class="conteudo">
+
+                <article class="produto" data-id="1" data-name="X-Bacon" data-price="27">
+                    <img src="images.jpeg" alt="X-Bacon">
+                    <h3>X-Bacon</h3>
+                    <p>R$ 27,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="2" data-name="X-Tudo" data-price="30">
+                    <img src="shutterstock_553665772.jpg" alt="X-Tudo">
+                    <h3>X-Tudo</h3>
+                    <p>R$ 30,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="3" data-name="X-Salada" data-price="12">
+                    <img src="x-salada-caseiro.avif" alt="X-Salada">
+                    <h3>X-Salada</h3>
+                    <p>R$ 12,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="4" data-name="X-Burguer" data-price="14">
+                    <img src="66e5f508742ed.jpeg" alt="X-Burguer">
+                    <h3>X-Burguer</h3>
+                    <p>R$ 14,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="5" data-name="Pastel" data-price="12">
+                    <img src="php5UZpd0.jpeg" alt="Pastel">
+                    <h3>Pastel</h3>
+                    <p>R$ 12,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="6" data-name="Cachorro Quente" data-price="10">
+                    <img src="BULLGUER_CHEESE-BACON-DOG-2_KATO-1024x683.jpg" alt="Cachorro quente">
+                    <h3>Cachorro Quente</h3>
+                    <p>R$ 10,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="7" data-name="X-Egg" data-price="12">
+                    <img src="um-delicioso-hamburguer-de-pequeno-almoco-com-ovo-frito-e-bacon_23-2151985469.avif" alt="X-Egg">
+                    <h3>X-Egg</h3>
+                    <p>R$ 12,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="8" data-name="X-Frango" data-price="16">
+                    <img src="3e60c9c3-d245-40de-8fe3-f1e5decefed1.jpg" alt="X-Frango">
+                    <h3>X-Frango</h3>
+                    <p>R$ 16,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="9" data-name="X-Calabresa" data-price="22">
+                    <img src="1920356_1785883486980.webp" alt="X-Calabresa">
+                    <h3>X-Calabresa</h3>
+                    <p>R$ 22,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="10" data-name="X-Cheddar" data-price="18">
+                    <img src="c7b55a6d-e2f8-4e3c-959a-ad7b618030c7.jpg" alt="X-Cheddar">
+                    <h3>X-Cheddar</h3>
+                    <p>R$ 18,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="11" data-name="X-Coração" data-price="20">
+                    <img src="Sem título.png" alt="X-Coração">
+                    <h3>X-Coração</h3>
+                    <p>R$ 20,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="12" data-name="X-Picanha" data-price="30">
+                    <img src="1902573_1789338423347.webp" alt="X-Picanha">
+                    <h3>X-Picanha</h3>
+                    <p>R$ 30,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="13" data-name="Coca-Cola 2L" data-price="15">
+                    <img src="coca cola 2 litros.jpg" alt="Coca-Cola 2 litros">
+                    <h3>Coca-Cola 2L</h3>
+                    <p>R$ 15,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="14" data-name="Pepsi" data-price="8">
+                    <img src="refrigerante_pepsi_cola_2_litros_6oavn01ub0.jpg.jpeg" alt="Pepsi">
+                    <h3>Pepsi</h3>
+                    <p>R$ 8,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="15" data-name="Guaraná Antarctica" data-price="7">
+                    <img src="img.jpeg" alt="Guaraná Antarctica">
+                    <h3>Guaraná Antarctica</h3>
+                    <p>R$ 7,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="16" data-name="Fanta Laranja" data-price="8">
+                    <img src="i.jpeg" alt="Fanta Laranja">
+                    <h3>Fanta Laranja</h3>
+                    <p>R$ 8,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="17" data-name="Fanta Uva" data-price="7.5">
+                    <img src="516_secundario-60698610a50762d2db17745587287151-1024-1024.webp" alt="Fanta Uva">
+                    <h3>Fanta Uva</h3>
+                    <p>R$ 7,50</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+                <article class="produto" data-id="18" data-name="Sprite" data-price="7">
+                    <img src="a.jpeg" alt="Sprite">
+                    <h3>Sprite</h3>
+                    <p>R$ 7,00</p>
+                    <button class="adicionar">Adicionar</button>
+                </article>
+
+            </section>
+
+            <aside class="carrinho" id="carrinho">
+
+                <h2>🛒 Seu pedido</h2>
+
+                <div id="itens-carrinho">
+                    <p class="vazio">Seu carrinho está vazio.</p>
+                </div>
+
+                <div class="total">
+                    <span>Total:</span>
+                    <strong id="total">R$ 0,00</strong>
+                </div>
+
+                <button id="finalizar">
+                    Finalizar pedido
+                </button>
+
+            </aside>
+
+        </div>
+
     </main>
-        <aside>
-            <h2>Seu pedido</h2>
-            <p>Seu carrinho está vazio.</p>
-            <p>Total: R$ 00,00</p>
-            <button id="add">Finalizar pedido</button>
-        </aside>
-    </main>
-    <script src="script.js"></script>
+
+    <footer id="contatos">
+        <h2>Lanchonete Gourmet 🍔</h2>
+        <p>Obrigado pela preferência!</p>
+    </footer>
+
 </body>
 </html>
